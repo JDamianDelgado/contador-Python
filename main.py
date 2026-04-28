@@ -2,8 +2,22 @@ from fastapi import FastAPI
 import csv
 import os
 from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "https://portafolio-nextjs-neon.vercel.app",
+    "https://portafolio-20-eta.vercel.app"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,   # solo estos dominios
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 archivo = "contador.csv"
 
 # Inicializar archivo si no existe
