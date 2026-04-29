@@ -13,14 +13,13 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,   # solo estos dominios
+    allow_origins=origins, 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 archivo = "contador.csv"
 
-# Inicializar archivo si no existe
 if not os.path.exists(archivo):
     with open(archivo, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
